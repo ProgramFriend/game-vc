@@ -12,7 +12,7 @@ public class ConsumablesController : MonoBehaviour
     }
     public void ConsumeItem(Item item)
     {
-        GameObject itemToConsume = Instantiate(Resources.Load<GameObject>("Consumables/" + item.ObjectSlug));
+        GameObject itemToConsume = Instantiate(Resources.Load<GameObject>("Prefabs/Consumables/" + item.ObjectSlug));
         if (item.ItemModifier == true)
         {
             itemToConsume.GetComponent<IConsumable>().Consume(player);

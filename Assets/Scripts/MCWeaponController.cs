@@ -44,7 +44,7 @@ public class MCWeaponController : MonoBehaviour
             Destroy(playerHand.transform.GetChild(0).gameObject);
         } //if player already has some weapon equipped
 
-        EquippedWeaponGO = (GameObject)Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug),
+        EquippedWeaponGO = (GameObject)Instantiate(Resources.Load<GameObject>("Prefabs/Weapons/" + itemToEquip.ObjectSlug),
             playerHand.transform.position, playerHand.transform.rotation);
 
         equippedWeapon = EquippedWeaponGO.GetComponent<IWeapon>();

@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     private GameObject slotPanel;
     public GameObject inventorySlot;
     public GameObject fixedInventorySlot;
+    public GameObject worldSlot;
     public GameObject inventoryItem;
 
     public GameObject worldSlotPanel;
@@ -63,9 +64,10 @@ public class Inventory : MonoBehaviour
         for (int i = 16; i < 19; i++)
         {
             items.Add(new Item());
-            slots.Add(Instantiate(inventorySlot));
+            slots.Add(Instantiate(worldSlot));
             slots[i].GetComponent<InventorySlot>().id = i;
             slots[i].transform.SetParent(worldSlotPanel.transform);
+            
         }
 
         EventHandler.OnItemAddedToInventory += AddItem;
