@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: WaterLeft
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -8196771809268054659, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: 5749957236310176973, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: -5615836031567351665, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: 327854808104738854, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: -2112041753267761234, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: 5059490717308417713, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: -7153340388585778284, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: -8408387271012582937, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: 1241458030737700067, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: 7111279270197248435, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: -1483754564943599108, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: -8994088390374203703, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  - {fileID: 6536117879397023503, guid: a8da7c5ff45cb054bb253e282cc0bbeb, type: 3}
+  m_MinSpeed: 6
+  m_MaxSpeed: 6
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 2

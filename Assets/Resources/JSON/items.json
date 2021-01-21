@@ -1,0 +1,75 @@
+[
+    {
+        "objectSlug": "sword_0",
+        "itemName": "Sword",
+        "description": "A long, sharp blade.",
+        "itemType": "Weapon",
+        "stackable": false,
+        "actionName": "Equip",
+        "ID": 0,
+        "itemModifier": 0,
+        "sellable": true,
+        "cost": 100,
+        "level": 1,
+        "stats": [
+            {
+                "statType": "Strength",
+                "baseValue": 100,
+                "statName": "Strength"
+            },
+            {
+                "statType": "Toughness",
+                "baseValue": 4,
+                "statName": "Toughness"
+            },
+            {
+                "statType": "AttackSpeed",
+                "baseValue": 2,
+                "statName": "Atk Spd"
+            }
+        ]
+    },
+    {
+        "objectSlug": "staff",
+        "itemName": "Cactus",
+        "description": "A long, sharp cactus.",
+        "itemType": "Weapon",
+        "stackable": false,
+        "actionName": "Equip",
+        "ID": 1,
+        "itemModifier": 0,
+        "sellable": false,
+        "cost": 0,
+        "level": 0,
+        "stats": [
+            {
+                "statType": "Strength",
+                "baseValue": 800,
+                "statName": "Strength"
+            },
+            {
+                "statType": "Toughness",
+                "baseValue": 2,
+                "statName": "Tougness"
+            },
+            {
+                "statType": "AttackSpeed",
+                "baseValue": 1,
+                "statName": "Atk Spd"
+            }
+        ]
+    },
+    {
+        "objectSlug": "potion_log",
+        "itemName": "Log Potion",
+        "description": "A potion that logs something to the console.",
+        "itemType": "Consumable",
+        "stackable": true,
+        "actionName": "Drink",
+        "ID": 2,
+        "itemModifier": 1,
+        "sellable": true,
+        "cost": 20,
+        "level": 2
+    }
+]

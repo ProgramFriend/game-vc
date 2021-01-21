@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: WaterGroundUP
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -8640934702922663046, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 8657159134485210304, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: -5450917787565009084, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: -2221714131849948373, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 8753797703183599366, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 7317059945031183157, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: -2031923776538012875, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 46549910313080507, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 4616937102210537862, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 7167194639061729715, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 5986212509210201528, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 6884099554209077671, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  - {fileID: 6927403968419901633, guid: ca0d7985371f36041abadcbe1f49ec43, type: 3}
+  m_MinSpeed: 6
+  m_MaxSpeed: 6
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 6
+  m_TileColliderType: 2
