@@ -1,5 +1,6 @@
-﻿using Pathfinding;
+using Pathfinding;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class EnemyAI : MonoBehaviour
 
 	Vector2 direction;
 
+	private List<Transform> enemies = new List<Transform>();
+	float minDist2 = 0.5f;
+	private Transform enemiesGroupTransform;
+
 //	Vector2 targetSpot;
 
 	void Start()
@@ -28,6 +33,13 @@ public class EnemyAI : MonoBehaviour
 		seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();
 		target = GameObject.Find("MC").transform;
+
+		enemiesGroupTransform = this.transform.parent.parent;
+		foreach(Transform enemy in enemiesGroupTransform)
+        {
+			enemies.Add(enemy.GetChild(0));
+			Debug.Log(enemy.name);
+        }
 
 		if(target == null)
         {
@@ -55,6 +67,22 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+		/*Vector2 closestFriendPos = Vector2.zero;
+		float closestDist2 = minDist2;
+		//SEPERATION
+		foreach (Transform enemy in enemies)
+		{
+			// Finds distance between an enemie's pos and its friend's pos
+			float curDist2 = Vector3.Distance(transform.position, enemy.transform.position);
+
+			// Is the flocker getting closer to its friend?
+			if (curDist2 < minDist2)
+			{
+				closestFriendPos = enemy.transform.position;
+				closestDist2 = curDist2;
+			}
+		}*/
+
 		if (path == null)
 			return;
 		if(currentWaypoint >= path.vectorPath.Count)
@@ -75,6 +103,13 @@ public class EnemyAI : MonoBehaviour
         {
 			direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 		}
+
+		/*if (closestDist2 < minDist2)
+		{
+			Vector2 avoidDirr = ((Vector2)transform.position - closestFriendPos).normalized;
+			//avoidDir *= (1 - closestDist / minDist);
+			direction += avoidDirr;
+		}*/
 
 		rb.velocity = direction * speed * Time.fixedDeltaTime;
 

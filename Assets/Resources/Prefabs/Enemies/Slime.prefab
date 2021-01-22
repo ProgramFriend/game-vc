@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusIndicator: {fileID: 479491853052705296}
-  FollowDistance: 10
+  FollowDistance: 15
   stats:
     giveDamage: 20
     maxHealth: 50
