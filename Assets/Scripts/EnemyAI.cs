@@ -35,11 +35,14 @@ public class EnemyAI : MonoBehaviour
 		target = GameObject.Find("MC").transform;
 
 		enemiesGroupTransform = this.transform.parent.parent;
-		foreach(Transform enemy in enemiesGroupTransform)
+		/*foreach(Transform enemy in enemiesGroupTransform)
         {
-			enemies.Add(enemy.GetChild(0));
-			Debug.Log(enemy.name);
-        }
+			if (enemy != null)
+			{
+				enemies.Add(enemy.GetChild(0));
+				Debug.Log(enemy.name);
+			}
+        }*/
 
 		if(target == null)
         {
@@ -70,17 +73,24 @@ public class EnemyAI : MonoBehaviour
 		Vector2 closestFriendPos = Vector2.zero;
 		float closestDist2 = minDist2;
 		//SEPERATION
-		foreach (Transform enemy in enemies)
+		foreach (Transform enemy in enemiesGroupTransform)
 		{
-			// Finds distance between an enemie's pos and its friend's pos
-			float curDist2 = Vector3.Distance(transform.position, enemy.transform.position);
-
-			// Is the flocker getting closer to its friend?
-			if (curDist2 < minDist2)
+			if (enemy.childCount > 0)
 			{
-				closestFriendPos = enemy.transform.position;
-				closestDist2 = curDist2;
-			}
+				// Finds distance between an enemie's pos and its friend's pos
+				float curDist2 = Vector3.Distance(transform.position, enemy.GetChild(0).position);
+
+				// Is the flocker getting closer to its friend?
+				if (curDist2 < minDist2)
+				{
+					closestFriendPos = enemy.GetChild(0).position;
+					closestDist2 = curDist2;
+				}
+            }
+            else
+            {
+				continue;
+            }
 		}
 
 		if (path == null)
