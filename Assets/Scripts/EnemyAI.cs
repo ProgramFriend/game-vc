@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
 	Vector2 direction;
 
 	private List<Transform> enemies = new List<Transform>();
-	float minDist2 = 0.5f;
+	float minDist2 = 3f;
 	private Transform enemiesGroupTransform;
 
 //	Vector2 targetSpot;
@@ -67,7 +67,7 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
-		/*Vector2 closestFriendPos = Vector2.zero;
+		Vector2 closestFriendPos = Vector2.zero;
 		float closestDist2 = minDist2;
 		//SEPERATION
 		foreach (Transform enemy in enemies)
@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
 				closestFriendPos = enemy.transform.position;
 				closestDist2 = curDist2;
 			}
-		}*/
+		}
 
 		if (path == null)
 			return;
@@ -94,22 +94,15 @@ public class EnemyAI : MonoBehaviour
 			reachedEndOfPath = false;
         }
 
-		//DOES THIS REALLY NEED TO BE HERE????
-		if(((Vector2)path.vectorPath[currentWaypoint] - rb.position).magnitude < 0)
-		{
-			direction = (rb.position - (Vector2)path.vectorPath[currentWaypoint]).normalized;
-		}
-        else
-        {
-			direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-		}
+		//direction = (rb.position - (Vector2)path.vectorPath[currentWaypoint]).normalized; ENEMY RUNS FFROM PLAYER
+		direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized; 
 
-		/*if (closestDist2 < minDist2)
+		if (closestDist2 < minDist2)
 		{
-			Vector2 avoidDirr = ((Vector2)transform.position - closestFriendPos).normalized;
-			//avoidDir *= (1 - closestDist / minDist);
-			direction += avoidDirr;
-		}*/
+			Vector2 avoidDir = ((Vector2)transform.position - closestFriendPos).normalized;
+			avoidDir *= (1.3f - closestDist2 / minDist2);
+			direction += avoidDir;
+		}
 
 		rb.velocity = direction * speed * Time.fixedDeltaTime;
 
