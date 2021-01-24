@@ -18,19 +18,17 @@ public class Golem : MonoBehaviour, IEnemy
 
 	public int ID { get; set; }
 	public int Experience { get; set; }
+	public Spawner spawner { get; set; }
 
 	private Player player;
-	public Spawner spawner { get; set; }
+	private Animator anim;
 
 	[System.Serializable]
 	public class EnemyStats
 	{
 		public int giveDamage;
 		public int maxHealth;
-
-		public int giveGoldMax;
-		public int giveGoldMin;
-		[HideInInspector] public int giveGold { get; set; }
+		public int giveGold;
 
 		private int _curHealth;
 		public int curHealth
@@ -42,7 +40,7 @@ public class Golem : MonoBehaviour, IEnemy
 		public void Init()
 		{
 			curHealth = maxHealth;
-			giveGold = Random.Range(giveGoldMin, giveGoldMax);
+			giveGold = 100;
 		}
 	}
 	public EnemyStats stats = new EnemyStats();
@@ -51,12 +49,13 @@ public class Golem : MonoBehaviour, IEnemy
 	{
 		stats.Init();
 		statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
-		ID = 2;
+		ID = 100;
 		Experience = 35;
 
-		characterStats = new CharacterStats(6, 2, 2);
+		characterStats = new CharacterStats(stats.giveDamage, 2, 2);
 
 		player = GameObject.Find("MC").GetComponent<Player>();
+		anim = GetComponent<Animator>();
 	}
 
 	public void TakeDamage(int damage)
@@ -65,7 +64,10 @@ public class Golem : MonoBehaviour, IEnemy
 		statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
 		if (stats.curHealth <= 0)
 		{
-			Die();
+			GetComponent<GolemFollow>().enabled = false;
+			CancelInvoke();
+			anim.Play("Death");
+			Invoke("Die", 4);
 		}
 	}
 
@@ -79,14 +81,34 @@ public class Golem : MonoBehaviour, IEnemy
 
 	public void PerformAttack()
 	{
+		anim.SetBool("isMoving", false);
+		Invoke("DoDamage", 0.4f);
+		anim.SetTrigger("Attack");
+	}
+
+	private void DoDamage()
+    {
 		player.DamagePlayer(characterStats.GetStat(StatBase.StatBaseType.Strength).GetStatValue());
+	}
+	private void StopAttack()
+    {
+		CancelInvoke();
+		anim.SetBool("isMoving", true);
 	}
 
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.CompareTag("Player"))
 		{
-			PerformAttack();
+			InvokeRepeating("PerformAttack", 0f, 0.8f);
+			
+		}
+	}
+    private void OnTriggerExit2D(Collider2D col)
+    {
+		if (col.gameObject.CompareTag("Player"))
+		{
+			StopAttack();
 		}
 	}
 }

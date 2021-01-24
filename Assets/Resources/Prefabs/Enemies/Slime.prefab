@@ -52,12 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusIndicator: {fileID: 479491853052705296}
+  DeathParticles: {fileID: 8319949124125316645, guid: cac955348ee835e4683af512a6c6b8da,
+    type: 3}
   FollowDistance: 7
   stats:
-    giveDamage: 20
+    giveDamage: 10
     maxHealth: 50
-    giveGoldMax: 20
-    giveGoldMin: 10
+    giveGoldMax: 6
+    giveGoldMin: 1
 --- !u!114 &479491852149371072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,10 +529,5 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   healthBarFill: {fileID: 479491852277957349}
-  slider: {fileID: 0}
-  levelText: {fileID: 0}
-  goldText: {fileID: 0}
-  curGold: 0
-  curXP: 0
   curHP: 100
   maxHP: 100

@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
 			col.gameObject.GetComponent<Interactable>().CallOffInteraction();
 		}
 	}
-		public void DamagePlayer(int damage)
+	public void DamagePlayer(int damage)
 	{
 		curHealth -= damage;
 		if (curHealth <= 0)

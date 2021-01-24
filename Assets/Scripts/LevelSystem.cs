@@ -47,7 +47,7 @@ public class LevelSystem : MonoBehaviour
         Level++;
         statusIndicatorMC.SetExp(CurExp, ReqExp, Level);
         ShopSystem.Instance.UpdateItems();
-        LevelUpParticles.SetActive(true);
+        Instantiate(LevelUpParticles, this.transform);
         StartCoroutine(LvlUpParticles(1.2f));
     }
 

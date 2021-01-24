@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
 	[SerializeField] private StatusIndicator statusIndicator;
 
+	public GameObject DeathParticles;
 	public int ID { get; set; }
     public int Experience { get; set; }
 
@@ -96,6 +97,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
 	public void Die()
     {
+		Instantiate(DeathParticles, this.transform, false);
 		EventHandler.EnemyDied(this);
 		EventHandler.GiveGold(stats.giveGold);
 		player.TotalKills++;

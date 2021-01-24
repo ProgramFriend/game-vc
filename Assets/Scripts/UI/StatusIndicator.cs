@@ -31,12 +31,13 @@ public class StatusIndicator : MonoBehaviour
 
     public IEnumerator MinusHealthByOne(int _health)
     {
+        float x = 0.8f / (curHP - _health);
         for (int i = curHP; i >= _health; i--)
         {
             float _value = (float)i / maxHP;
             healthBarRect.localScale = new Vector2(_value, healthBarRect.localScale.y);
             healthBarFill.color = gradient.Evaluate(_value);
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(x);
         }
     }
 }

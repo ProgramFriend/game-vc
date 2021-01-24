@@ -14,7 +14,7 @@
         "stats": [
             {
                 "statType": "Strength",
-                "baseValue": 100,
+                "baseValue": 15,
                 "statName": "Strength"
             },
             {
