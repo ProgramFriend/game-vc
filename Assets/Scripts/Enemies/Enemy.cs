@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
 	public void Die()
     {
-		Instantiate(DeathParticles, this.transform, false);
+		Instantiate(DeathParticles, new Vector3(transform.position.x, transform.position.y, -3), Quaternion.identity, this.transform.parent);
 		EventHandler.EnemyDied(this);
 		EventHandler.GiveGold(stats.giveGold);
 		player.TotalKills++;

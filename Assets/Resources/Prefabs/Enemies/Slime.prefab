@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusIndicator: {fileID: 479491853052705296}
-  DeathParticles: {fileID: 8319949124125316645, guid: cac955348ee835e4683af512a6c6b8da,
+  DeathParticles: {fileID: 6819726269690815239, guid: c546555d5d7e17a468a4e5ca75af9a63,
     type: 3}
   FollowDistance: 7
   stats:
