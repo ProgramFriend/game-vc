@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 	private float regenHPWait;
 
 	[SerializeField]
-	private StatusIndicator statusIndicator;
+	private StatusIndicatorPlayer statusIndicator;
 
 	void Start()
 	{
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
 		}/////
 		else if (col.gameObject.CompareTag("Enemy"))
 		{
-			col.gameObject.GetComponent<Enemy>().TakeDamage(characterStats.GetStat(StatBase.StatBaseType.Strength).GetStatValue());
+			col.gameObject.GetComponent<IEnemy>().TakeDamage(characterStats.GetStat(StatBase.StatBaseType.Strength).GetStatValue());
 		}
 		/////
 	}

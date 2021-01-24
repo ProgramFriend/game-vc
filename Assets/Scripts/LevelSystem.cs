@@ -9,7 +9,7 @@ public class LevelSystem : MonoBehaviour
     public GameObject LevelUpParticles;
     public GameObject LevelUpCanvas;
 
-    [SerializeField] private StatusIndicator statusIndicatorMC;
+    [SerializeField] private StatusIndicatorPlayer statusIndicatorMC;
     public int Level { get; set; }
     public int CurExp { get; set; }
     //public int ReqExp { get { return 100*(Level+1)*(Level+1) - (100 * Level * Level); } }
