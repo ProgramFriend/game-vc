@@ -8,12 +8,6 @@ public class Golem : MonoBehaviour, IEnemy
 {
 	private CharacterStats characterStats;
 
-
-	/// <summary>
-	/// 
-	/// </summary>
-	//[Header("Optional: ")]
-
 	[SerializeField] private StatusIndicator statusIndicator;
 
 	public int ID { get; set; }
@@ -22,7 +16,10 @@ public class Golem : MonoBehaviour, IEnemy
 
 	private Player player;
 	private Animator anim;
+	private float difference;
 
+	public Transform specAttkPoint;
+	public GameObject specialSword;
 	[System.Serializable]
 	public class EnemyStats
 	{
@@ -50,7 +47,7 @@ public class Golem : MonoBehaviour, IEnemy
 		stats.Init();
 		statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
 		ID = 100;
-		Experience = 35;
+		Experience = 100;
 
 		characterStats = new CharacterStats(stats.giveDamage, 2, 2);
 
@@ -58,6 +55,29 @@ public class Golem : MonoBehaviour, IEnemy
 		anim = GetComponent<Animator>();
 	}
 
+    private void Update()
+    {
+		difference = Vector2.Distance(this.transform.position, player.transform.position);
+        if(difference < 10f && difference > 5f)
+        {
+			//PerformSpecialAttack();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag("Player"))
+		{
+			InvokeRepeating(nameof(PerformAttack), 0f, 0.8f);
+		}
+	}
+    private void OnTriggerExit2D(Collider2D col)
+    {
+		if (col.gameObject.CompareTag("Player"))
+		{
+			StopAttack();
+		}
+	}
 	public void TakeDamage(int damage)
 	{
 		stats.curHealth -= damage;
@@ -67,10 +87,9 @@ public class Golem : MonoBehaviour, IEnemy
 			GetComponent<GolemFollow>().enabled = false;
 			CancelInvoke();
 			anim.Play("Death");
-			Invoke("Die", 4);
+			Invoke(nameof(Die), 3.9f);
 		}
 	}
-
 	public void Die()
 	{
 		EventHandler.EnemyDied(this);
@@ -82,33 +101,23 @@ public class Golem : MonoBehaviour, IEnemy
 	public void PerformAttack()
 	{
 		anim.SetBool("isMoving", false);
-		Invoke("DoDamage", 0.4f);
+		Invoke(nameof(DoDamage), 0.4f);
 		anim.SetTrigger("Attack");
 	}
-
 	private void DoDamage()
-    {
+	{
 		player.DamagePlayer(characterStats.GetStat(StatBase.StatBaseType.Strength).GetStatValue());
+	}
+	public void PerformSpecialAttack()
+    {
+		anim.SetTrigger("SpecialAttack");
+		GameObject swords = Instantiate(specialSword, specAttkPoint.position, specAttkPoint.rotation, this.transform);
+
+		Destroy(swords, 1f);
 	}
 	private void StopAttack()
     {
 		CancelInvoke();
 		anim.SetBool("isMoving", true);
-	}
-
-	private void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.gameObject.CompareTag("Player"))
-		{
-			InvokeRepeating("PerformAttack", 0f, 0.8f);
-			
-		}
-	}
-    private void OnTriggerExit2D(Collider2D col)
-    {
-		if (col.gameObject.CompareTag("Player"))
-		{
-			StopAttack();
-		}
 	}
 }

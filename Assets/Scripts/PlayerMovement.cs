@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    public Transform startPoint;
     public GameObject bulletPrefab;
 
     public Transform playerHand;
@@ -21,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     int x = 1;
+
+    private float toWait = 0.3f;
+    private float someTime;
+
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -63,13 +65,18 @@ public class PlayerMovement : MonoBehaviour
         //take attack rate property from weapon script or from IWeapon interface
         if (Input.GetButtonDown("Submit"))
         {
-            Shoot();
+            if (someTime <= 0)
+            {
+                Shoot();
+                someTime = toWait;
+            }
         }
-
+        someTime -= Time.deltaTime;
     }
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+        
     }
     public void Shoot()
     {
@@ -78,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(movement.y == 0) shootingPoint.y = animator.GetFloat("UDIdle");
         else shootingPoint.y = movement.y;
-        GameObject bullet = Instantiate(bulletPrefab, startPoint.position, startPoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, playerHand.position, playerHand.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(shootingPoint.normalized * bulletForce, ForceMode2D.Impulse);
     }

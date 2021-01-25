@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6575866427834460507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6073065962435078806}
+  m_Layer: 10
+  m_Name: SpecAttkPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6073065962435078806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6575866427834460507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9074328707781538435}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9074328707138188733
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +284,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9074328707746471295}
+  - {fileID: 6073065962435078806}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -293,8 +324,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1160947451
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 8091107190312629236, guid: 42a83649f8bb8ff4aa1ce7ee5ad0bef5,
     type: 3}
@@ -340,9 +371,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusIndicator: {fileID: 9074328707746471294}
+  specAttkPoint: {fileID: 6073065962435078806}
+  specialSword: {fileID: 1353443429147938791, guid: f18242ebe4ca2274f9b777c4b4980cd4,
+    type: 3}
   stats:
     giveDamage: 5
-    maxHealth: 800
+    maxHealth: 50
     giveGold: 65
 --- !u!114 &9074328707781538438
 MonoBehaviour:
@@ -357,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  atkPoint: {fileID: 6073065962435078806}
 --- !u!61 &315642941297054218
 BoxCollider2D:
   m_ObjectHideFlags: 0

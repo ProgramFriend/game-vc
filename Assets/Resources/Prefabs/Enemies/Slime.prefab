@@ -58,8 +58,8 @@ MonoBehaviour:
   stats:
     giveDamage: 10
     maxHealth: 50
-    giveGoldMax: 6
-    giveGoldMin: 1
+    giveGoldMax: 50
+    giveGoldMin: 10
 --- !u!114 &479491852149371072
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -124,8 +124,7 @@ public class Player : MonoBehaviour
 
 	public void PlayerDied()
     {
-		Debug.Log("Player died");
-		playerMovement.enabled = false;
+		PauseControl.PauseGame();
 		deathUI.SetActive(true);
 		StartCoroutine("Respawn");
 		this.transform.position = Vector2.zero;
@@ -135,9 +134,9 @@ public class Player : MonoBehaviour
     }
 	IEnumerator Respawn()
 	{
-		yield return new WaitForSeconds(RespawnTime);
+		yield return new WaitForSecondsRealtime(RespawnTime);
+		PauseControl.PauseGame();
 		deathUI.SetActive(false);
-		playerMovement.enabled = true;
 		StopCoroutine("Respawn");		
 	}
 }

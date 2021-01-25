@@ -31,7 +31,7 @@ public class StatusIndicator : MonoBehaviour
 
     public IEnumerator MinusHealthByOne(int _health)
     {
-        float x = 0.8f / (curHP - _health);
+        float x = 0.1f / (curHP - _health);
         for (int i = curHP; i >= _health; i--)
         {
             float _value = (float)i / maxHP;

@@ -52,7 +52,8 @@ public class StatusIndicatorPlayer : MonoBehaviour
 
     public IEnumerator AddGoldByOne(int _gold)
     {
-        float waitTime = 1f / _gold;
+        float waitTime = 0.1f / _gold;
+        Debug.Log(waitTime);
         for (int i = curGold; i <= _gold; i++)
         {
             goldText.text = i.ToString();
@@ -89,7 +90,7 @@ public class StatusIndicatorPlayer : MonoBehaviour
             float _value = (float)i / maxHP;
             healthBarRect.localScale = new Vector2(_value, healthBarRect.localScale.y);
             healthBarFill.color = gradient.Evaluate(_value);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 }

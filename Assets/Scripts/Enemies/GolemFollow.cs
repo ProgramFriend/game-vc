@@ -7,14 +7,17 @@ public class GolemFollow : MonoBehaviour
 	Transform target;
 	Vector2 pos;
 	Vector2 offset;
+	Vector2 spawnPos;
 
 	public float speed;
-
-
 	private Animator anim;
+
+	public Transform atkPoint;
 
 	float x=-1.35f;
 	float xx=2f;
+
+	float atkPointDistance = 3f;
 
 	void Start()
 	{
@@ -33,16 +36,12 @@ public class GolemFollow : MonoBehaviour
 		if (pos.y > 0) offset.y = x;
 		else offset.y = x;
 
+
 		anim.SetFloat("Horizontal", pos.x);
 		anim.SetFloat("Vertical", pos.y);
-    }
+	}
     void FixedUpdate()
 	{
-
-		//float distance = Vector2.Distance(rb.position, target.transform.position);
-
-		//rb.velocity = direction * speed * Time.fixedDeltaTime;
-
 		transform.position = Vector2.MoveTowards(transform.position, (Vector2)target.position + offset, speed * Time.fixedDeltaTime);
 	}
 }
