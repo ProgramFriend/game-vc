@@ -53,7 +53,6 @@ public class StatusIndicatorPlayer : MonoBehaviour
     public IEnumerator AddGoldByOne(int _gold)
     {
         float waitTime = 0.1f / _gold;
-        Debug.Log(waitTime);
         for (int i = curGold; i <= _gold; i++)
         {
             goldText.text = i.ToString();

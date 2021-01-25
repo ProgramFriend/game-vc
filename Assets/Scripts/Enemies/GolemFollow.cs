@@ -17,8 +17,6 @@ public class GolemFollow : MonoBehaviour
 	float x=-1.35f;
 	float xx=2f;
 
-	float atkPointDistance = 3f;
-
 	void Start()
 	{
 		anim = GetComponent<Animator>();

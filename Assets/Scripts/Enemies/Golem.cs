@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Runtime.InteropServices.ComTypes;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Golem : MonoBehaviour, IEnemy
@@ -20,6 +17,11 @@ public class Golem : MonoBehaviour, IEnemy
 
 	public Transform specAttkPoint;
 	public GameObject specialSword;
+	Vector3 center;
+	Vector3 spawnPos;
+	private GameObject[] swords = new GameObject[10];
+
+
 	[System.Serializable]
 	public class EnemyStats
 	{
@@ -42,6 +44,11 @@ public class Golem : MonoBehaviour, IEnemy
 	}
 	public EnemyStats stats = new EnemyStats();
 
+	private float waitTime = 5f;
+	private float someTime;
+
+	private GolemFollow golemFollow;
+
 	private void Awake()
 	{
 		stats.Init();
@@ -53,15 +60,24 @@ public class Golem : MonoBehaviour, IEnemy
 
 		player = GameObject.Find("MC").GetComponent<Player>();
 		anim = GetComponent<Animator>();
+		golemFollow = GetComponent<GolemFollow>();
 	}
 
     private void Update()
     {
+		center = this.transform.position;
+
+
 		difference = Vector2.Distance(this.transform.position, player.transform.position);
-        if(difference < 10f && difference > 5f)
+        if(difference < 5f && difference > 3f)
         {
-			//PerformSpecialAttack();
+			if (someTime <= 0)
+			{
+				PerformSpecialAttack();
+				someTime = waitTime;
+			}
         }
+		someTime -= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -111,13 +127,32 @@ public class Golem : MonoBehaviour, IEnemy
 	public void PerformSpecialAttack()
     {
 		anim.SetTrigger("SpecialAttack");
-		GameObject swords = Instantiate(specialSword, specAttkPoint.position, specAttkPoint.rotation, this.transform);
-
-		Destroy(swords, 1f);
+		golemFollow.enabled = false;
+		for (int i = 0; i < 10; i++)
+		{
+			spawnPos = TheCircle(center, 4f, i);
+			swords[i] = (Instantiate(specialSword, spawnPos, Quaternion.identity));
+		}
+		for(int i=0; i<10; i++)
+        {
+			Destroy(swords[i], 2f);
+			Invoke(nameof(StopAttack), 2.2f);
+        }
 	}
 	private void StopAttack()
     {
-		CancelInvoke();
 		anim.SetBool("isMoving", true);
+		golemFollow.enabled = true;
+		CancelInvoke();
+	}
+
+	Vector3 TheCircle(Vector3 center, float radius, int index)
+	{
+		float ang = index * 36;
+		Vector3 pos;
+		pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+		pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+		pos.z = center.z;
+		return pos;
 	}
 }
