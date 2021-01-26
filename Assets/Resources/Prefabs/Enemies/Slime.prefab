@@ -57,7 +57,7 @@ MonoBehaviour:
   FollowDistance: 7
   stats:
     giveDamage: 10
-    maxHealth: 50
+    maxHealth: 60
     giveGoldMax: 50
     giveGoldMin: 10
 --- !u!114 &479491852149371072

@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
     public CharacterStats characterStats;
 	public GameObject deathUI;
 
-	private PlayerMovement playerMovement;
-
 	int maxHealth;
 
     public int RespawnTime { get; set; }
@@ -41,7 +39,6 @@ public class Player : MonoBehaviour
 		EventHandler.OnGiveGold += AddGold;
 
 		characterStats = new CharacterStats(1, 1, 2);
-		playerMovement = GetComponent<PlayerMovement>();
 
 		maxHealth = 50;
 		_health = maxHealth;
@@ -96,7 +93,13 @@ public class Player : MonoBehaviour
 		if (curHealth <= 0)
             PlayerDied();
 		statusIndicator.SetHealth(curHealth, maxHealth);
+		PlayerMovement.PlayerDamaged = true;
+		Invoke(nameof(PlayerNotDamaged), 0.15f);
 	}
+	public void PlayerNotDamaged()
+    {
+		PlayerMovement.PlayerDamaged = false;
+    }
 
 	public void AddHealth(int toAdd)
     {

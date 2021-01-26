@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1353443429147938784}
   - component: {fileID: 1353443429147938785}
   - component: {fileID: 1353443429147938790}
+  - component: {fileID: 5197708273554865192}
+  - component: {fileID: 1641770190288445999}
   m_Layer: 0
   m_Name: GolemSpecAttk
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353443429147938791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0.49, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3718691, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,3 +104,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5197708273554865192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353443429147938791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e951953e03925e4439d41d0d5b144813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoDamage: 2
+--- !u!70 &1641770190288445999
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353443429147938791}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.66}
+  m_Size: {x: 0.66, y: 1.41}
+  m_Direction: 0

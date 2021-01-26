@@ -13,12 +13,15 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public Rigidbody2D rb;
 
+    public Vector2 damagedMovement;
     public Vector2 movement;
     private Vector2 shootingPoint;
 
     public Animator animator;
 
     int x = 1;
+
+    public static bool PlayerDamaged { get; set; }
 
     private float toWait = 0.3f;
     private float someTime;
@@ -75,8 +78,13 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
-        
+        if (PlayerDamaged)
+        {
+            damagedMovement.x = animator.GetFloat("Horizontal");
+            damagedMovement.y = animator.GetFloat("Vertical");
+            rb.MovePosition(rb.position - damagedMovement.normalized * 2 * moveSpeed * Time.fixedDeltaTime);
+        }
+        else rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
     public void Shoot()
     {
@@ -86,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         if(movement.y == 0) shootingPoint.y = animator.GetFloat("UDIdle");
         else shootingPoint.y = movement.y;
         GameObject bullet = Instantiate(bulletPrefab, playerHand.position, playerHand.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(shootingPoint.normalized * bulletForce, ForceMode2D.Impulse);
+        Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
+        rbBullet.AddForce(shootingPoint.normalized * bulletForce, ForceMode2D.Impulse);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bullet_0 : MonoBehaviour
 {
+    public int damage;
     public GameObject hitEffect;
 
     public List<StatBase> Stats { get; set; }
@@ -22,7 +23,7 @@ public class bullet_0 : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<IEnemy>().TakeDamage(20);
+            collision.GetComponent<IEnemy>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
         else

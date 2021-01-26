@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Runtime.InteropServices.ComTypes;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour, IEnemy
 {
-	private CharacterStats characterStats;
+	public CharacterStats characterStats;
 
 
 	/// <summary>

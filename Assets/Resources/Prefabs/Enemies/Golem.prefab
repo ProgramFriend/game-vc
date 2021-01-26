@@ -376,7 +376,7 @@ MonoBehaviour:
     type: 3}
   stats:
     giveDamage: 5
-    maxHealth: 50
+    maxHealth: 250
     giveGold: 65
 --- !u!114 &9074328707781538438
 MonoBehaviour:
